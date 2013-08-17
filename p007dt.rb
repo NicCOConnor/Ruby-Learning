@@ -1,13 +1,10 @@
 #p007dt.rb
+
+#Dealing with Extreamly large numbers
+
 # Ruby is dynamic
-x = 7       #integer
-x = "house" #string
-x = 7.5     #real
-
-#In ruby everything you manipulate is an object
-'I Love Ruby'.length
-
-#Messing with classes, Specifically Float
-puts Float::DIG
-
-puts Float::MAX
+rice_on_square = 1
+64.times do |square|
+   puts "On square #{square + 1} are #{rice_on_square} grains(s)"
+   rice_on_square *= 2
+end
