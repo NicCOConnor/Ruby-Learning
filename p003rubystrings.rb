@@ -17,3 +17,6 @@ puts 'Hello' * 3
 #http://rubylearning.com/satishtalim/ruby_names.html
 PI = 3.1416
 puts PI  
+
+#running a command through puts
+puts `dir`
