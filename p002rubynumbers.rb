@@ -22,4 +22,7 @@ puts (-5 % 3)
 puts (5 % -3)
 puts (-5 % -3)
 
-
+# Difference Between or and ||
+puts nil || 2013
+puts false || 2013
+puts "ruby" || 2013
