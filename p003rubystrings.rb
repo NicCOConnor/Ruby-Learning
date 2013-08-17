@@ -18,5 +18,6 @@ puts 'Hello' * 3
 PI = 3.1416
 puts PI  
 
-#running a command through puts
-puts `dir`
+# Running a command through system
+system("dir")
+
