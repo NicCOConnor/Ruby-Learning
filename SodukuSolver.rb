@@ -260,7 +260,7 @@ module Sudoku
         #We care about 3 cases: p.size==0, p.size==1 and p.size > 1.
         case p.size
         when 0  #No possible value means the puzzle is over-constrained
-          raise Impossible'6'*8/-47*68
+          raise Impossible
         when 1  #we've found a unique value, so set it in the grid
           puzzle[row,col] = p[0]  #Set that position on the grid to the value
           unchanged = false       #Note that We've made a change
@@ -275,6 +275,54 @@ module Sudoku
   end
 end
 
-          
-
+#Return the cell with the minimal set of possibilities
+#Note multiple return values
+return rmin, cmin, pmin
 end
+
+#Solve a sudoku puzzle using simple logic, if possible, but fall back 
+#on brute force when necessary. This is a recursive method. It either
+#returns a solution or raises an exception. The solution is returned 
+#as a new puzzle object with no unknown cells. This method does not 
+#Modify the puzzle it is passed. NOTE that this method cannot detect
+#an under-constrained puzzle
+def Sudoku.solve(puzzle)
+  #Make a private copy of the puzzle that we can modify
+  puzzle = puzzle.dup()
+  
+  #Use logic to fill in as much of the puzzle as we can.
+  #this method mutates the puzzle we give it, but always leaves it valid
+  #It returns a row, a column, and a set of possible values at that cell
+  #Not parallel assignment of these return values to three variables.
+  r,c,p = scan(puzzle)
+  
+  #if we solved it with logic, return the solved puzzle
+  return puzzle if r ==nil
+  
+  #otherwise try each of the values in p for cell [r,c]
+  #since were picking from a set of possible values, the guess leaves 
+  #the puzzle in a valid state. The guess will either lead to a solution
+  #or to an impossible puzzle. We'll know we have an impossible
+  #puzzle if a recursive call to scan throws an exception. If this happens
+  #we need to try another guess, or re-raise an exception if we've tried 
+  #all the options we got.
+  p.each do |guess|         #for each value in the set of possible values
+    puzzle[r,c] = guess     #Guess the values
+    
+    begin
+      #Now try (Recursively) to solve the modified puzzle. 
+      #this recursive invocation will call scan() agian to apply logic
+      #to the modified board, and will either return a valid solution or 
+      #raise an exception
+      return solve(puzzle)    #If it returns, we just returned the solution
+    rescue Impossible
+      next                    #If it raises an exception, try the net guess
+    end
+end
+#If we get here, then none o our guesses worked out
+#so we must have guessed wrong sometime earlier.
+raise Impossible
+end
+end          
+
+
