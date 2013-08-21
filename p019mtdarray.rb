@@ -30,3 +30,18 @@ print a, b, c
 
 #Environment variables
 ENV.each{|k,v| puts "#{k}: #{v}"}
+  
+#Modifying environment variables
+ENV["course"] = "FORPC101"
+puts "#{ENV['course']}"
+
+str = 'hello'
+print Array(str).class #array
+
+str ='hello\nworld'
+print Array(str)
+
+#What are the ancestors of Array
+a = [1,2,3,4]
+print a.class.ancestors()
+
