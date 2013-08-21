@@ -15,3 +15,18 @@ end
 num, square = mtdarray
 puts num
 puts square
+
+#Parallel Assignment 
+a = 1,2,3,4
+b = [1,2,3,4]
+
+puts a.to_s + " " + b.to_s
+
+#If the left hand side contains a comma parallel Assignment takes over and 3,4 are dropped
+a, b = 1,2
+c, = 1,2,3,4
+
+print a, b, c
+
+#Environment variables
+ENV.each{|k,v| puts "#{k}: #{v}"}
