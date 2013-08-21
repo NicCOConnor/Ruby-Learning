@@ -26,7 +26,7 @@ module Sudoku
   #   box in the middle is box 4. The box in the lower-right is box 8
   #
   # Create a new puzzle with Sudoku::Puzzle.new, Specifying the initial
-  # state as a string or as an array of string. The string(s) should use
+  # state as a string or as an array of string. The string(s) shouluse
   # the characters 1 through 9 for the given values, and '.' for cells 
   # whose value is unspecified. Whitespace in the input is ignored
   #
@@ -58,7 +58,7 @@ module Sudoku
     # to 9 and use the '.' character for unkown cells. Whitespace,
     #including new lines, will be stripped 
     def initialize(lines)
-      if (lines.respond_to? :join)  # If argument looks liike an array of lines
+      if (lines.respond_to? :join)  # If argument looks like an array of lines
         s = lines.join              #then join them into a single string
       else                          #otherwise, assume we have a string
         s = lines.dup               # and make a private copy of it
@@ -68,6 +68,8 @@ module Sudoku
       # the '!' in gsub! indicated that this is a mutator method that
       # alters the string directly rather than making a copy
       s.gsub!(/\s/, "")
+      #added so the input can use 0 for unknown values
+      s.gsub!("0", ".")
       
       # Raise an exception if the input is the wrong size.
       # Note that we use unless instead of it, and use it in modifier form
@@ -78,7 +80,7 @@ module Sudoku
       if i = s.index(/[^123456789\.]/)
         #Include the invalid Character in the error message
         # Note the ruby expression inside #{} in string literal
-        raise Invalid "Illegal characters #{s[i,1]} in puzzle"
+        raise Invalid, "Illegal characters #{s[i,1]} in puzzle"
       end
       
       #The following two lines convert our string of ASCII characters

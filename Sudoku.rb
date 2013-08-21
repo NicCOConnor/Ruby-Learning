@@ -1,0 +1,4 @@
+require "SodukuSolver"
+include Sudoku
+puzzle = ['000060870100040200300200005000000618700000003618000000500007002007080001024050000']
+puts Sudoku.solve(Sudoku::Puzzle.new(puzzle))
