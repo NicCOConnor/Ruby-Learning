@@ -14,16 +14,10 @@ class Thing
 end
 
 class Treasure < Thing    #Treasure descends from Thing
+  attr_accessor :value
+  
   def initialize(aName, aDescription, aValue)
     super(aName, aDescription)
-    @value = aValue
-  end
-  
-  def value
-    return @value
-  end
-  
-  def value=(aValue)
     @value = aValue
   end
 end
