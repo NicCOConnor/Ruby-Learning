@@ -4,18 +4,18 @@ class Thing
     @description    = aDescription
   end
   #Get Name variable/attribute
-  def get_name
+  def name
     return @name
   end
   #Set Name variable/attribute
-  def set_name(aName)
+  def name=(aName)
     @name = aName
   end
   #Get Description variable/attribute
-  def get_description
+  def description
     return @description
   end
-  def set_description(aDescription)
+  def description=(aDescription)
     @description = aDescription
   end
 end
@@ -26,11 +26,11 @@ class Treasure < Thing    #Treasure descends from Thing
     @value = aValue
   end
   
-  def get_value
+  def value
     return @value
   end
   
-  def set_value(aValue)
+  def value=(aValue)
     @value = aValue
   end
 end
@@ -40,7 +40,7 @@ t1 = Treasure.new("Sword","an Elvish weapon forged of gold", 800)
 t2 = Treasure.new("Dragon Horde","a huge pile of jewels", 550)
 puts "This is treasure1: #{t1.inspect}"
 puts "This is treasure2: #{t2.inspect}"
-puts "t1 name=#{t1.get_name}, description=#{t1.get_description}, value=#{t1.get_value}"
-t1.set_value(100)
-t1.set_description(" (now somewhat tarnished)")
-puts "t1 (NOW) name=#{t1.get_name}, description=#{t1.get_description}, value=#{t1.get_value}"
+puts "t1 name=#{t1.name}, description=#{t1.description}, value=#{t1.value}"
+t1.value = 100
+t1.description = " (now somewhat tarnished)"
+puts "t1 (NOW) name=#{t1.name}, description=#{t1.description}, value=#{t1.value}"
