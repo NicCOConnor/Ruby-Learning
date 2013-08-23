@@ -1,30 +1,46 @@
 class Thing
-  def set_name(aName)
-    @name = aName
+  def initialize(aName, aDescription)
+    @name           = aName
+    @description    = aDescription
   end
+  #Get Name variable/attribute
   def get_name
     return @name
   end
+  #Set Name variable/attribute
+  def set_name(aName)
+    @name = aName
+  end
+  #Get Description variable/attribute
+  def get_description
+    return @description
+  end
+  def set_description(aDescription)
+    @description = aDescription
+  end
 end
 
-class Treasure
-  def initialize(aName, aDescription)
-    @name         = aName
-    @description  = aDescription
+class Treasure < Thing    #Treasure descends from Thing
+  def initialize(aName, aDescription, aValue)
+    super(aName, aDescription)
+    @value = aValue
   end
   
-  def to_s  # ovverride default to_s method
-    "The #{@name} Treasure is #{@description}\n"
+  def get_value
+    return @value
+  end
+  
+  def set_value(aValue)
+    @value = aValue
   end
 end
 
-thing1 = Thing.new()
-thing1.set_name("A Lovely Thing")
-puts thing1.get_name()
-
-t1 = Treasure.new("Sword","an Elvish weapon forged of gold")
-t2 = Treasure.new("Ring","a magic ring of great power")
-puts t1.to_s()
-puts t2.to_s()
-#the inspect method lets you look inside an object
-puts "Inspecting 1st treasure: #{t1.inspect}"
+#This is where are Program starts
+t1 = Treasure.new("Sword","an Elvish weapon forged of gold", 800)
+t2 = Treasure.new("Dragon Horde","a huge pile of jewels", 550)
+puts "This is treasure1: #{t1.inspect}"
+puts "This is treasure2: #{t2.inspect}"
+puts "t1 name=#{t1.get_name}, description=#{t1.get_description}, value=#{t1.get_value}"
+t1.set_value(100)
+t1.set_description(" (now somewhat tarnished)")
+puts "t1 (NOW) name=#{t1.get_name}, description=#{t1.get_description}, value=#{t1.get_value}"
