@@ -1,7 +1,6 @@
 class Thing
-  attr_reader :description
-  attr_writer :description
-  attr_writer :name
+  attr_reader(:description)
+  attr_writer(:name, :description)
   
   def initialize(aName, aDescription)
     @name           = aName
