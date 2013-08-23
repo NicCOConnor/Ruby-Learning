@@ -1,22 +1,15 @@
 class Thing
+  attr_reader :description
+  attr_writer :description
+  attr_writer :name
+  
   def initialize(aName, aDescription)
     @name           = aName
     @description    = aDescription
   end
   #Get Name variable/attribute
   def name
-    return @name
-  end
-  #Set Name variable/attribute
-  def name=(aName)
-    @name = aName
-  end
-  #Get Description variable/attribute
-  def description
-    return @description
-  end
-  def description=(aDescription)
-    @description = aDescription
+    return @name.capitalize
   end
 end
 
