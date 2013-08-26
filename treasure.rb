@@ -41,8 +41,11 @@ end
 class Map
   #@rooms will be an array - an ordered list
   #of room objects
+  @@num_rooms = 0
+  
   def initialize(someRooms)
     @rooms = someRooms
+    @@num_rooms += someRooms.count
   end
   #The to_s method iterates over all the Room objects in @rooms
   #and prints information on each. We'll come back to look at the 
@@ -52,6 +55,9 @@ class Map
       |a_room|
       puts(a_room)
     }
+  end
+  def show_classvars
+    return "There are #{@@num_rooms} rooms"
   end
 end
 
@@ -81,8 +87,10 @@ puts "\nLet's take a look at room1..."
 puts "room1 name=#{room1.name}, description=#{room1.description}"
 puts "\nAnd the map..."
 puts "mymap = #{mymap.to_s}"
-puts "\nFinally, let's check how many Thing objects we've created..."
+puts "\nLet's check how many Thing objects we've created..."
 puts (t1.show_classvars)
+puts "\nFinally, Let's check how many rooms our map has..."
+puts (mymap.show_classvars)
  
 
 
