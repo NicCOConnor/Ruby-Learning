@@ -47,7 +47,18 @@ puts s2.chomp('rld')
 # %p - inspect object
 # %s - string
 # %x - Hex
-printf("%d %0.02f %s %p", 10.123, 3.14159, s2, s2)
+printf("%d %0.02f %s %p\n", 10.123, 3.14159, s2, s2)
 
 #Example of Ranges. 
+a = (1..10)
+a.each{|i| printf "%d ", i}
+puts ''
+  
+#HEREDOCS for multiline stuff
+  hdoc1 = <<EODOC
+  I wandered lonely as a #{"cloud".upcase},
+  That floats on high o'er vale and hill...
+EODOC
+#^--Must be flush and nothing else on the line. Not even comments.
+  puts hdoc1
 
