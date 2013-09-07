@@ -65,6 +65,47 @@ end
 }
 
 #while Loops 
+$hours_asleep = 0
+def tired
+  if $hours_asleep >= 8 then
+    $hours_asleep = 0
+    return false
+  else
+    $hours_asleep += 1
+    return true
+  end
+end
+
+def snore
+  puts('snore...')
+end
+
+def sleep
+  puts("z" * $hours_asleep)
+end
+
+while tired do sleep end #a single line while loop
+
+while tired
+  sleep
+end                     #Multiline while loop 
+
+sleep while tired       #Single line modifier, Really like this one. 
+
+begin
+  sleep
+  snore
+end while tired       #multiline while modifier, This code will always run at least once
+
+x = 100
+#The code in this loop will never run
+while(x<100) do puts('x < 100') end
+
+#The code in this loop never runs
+
+
+
+
  
  
  
